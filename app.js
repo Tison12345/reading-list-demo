@@ -1,4 +1,16 @@
-var books = [];
+var books = JSON.parse(localStorage.getItem("books") || "[]");
+
+function saveBooks() {
+  localStorage.setItem("books", JSON.stringify(books));
+}
+
+function showStats() {
+  var readCount = 0;
+  for (var i = 0; i < books.length; i++) {
+    if (books[i].read) readCount++;
+  }
+  document.getElementById("stats").textContent = "Total books: " + books.length + ", read: " + readCount;
+}
 
 function showBooks() {
   var list = document.getElementById("book-list");
@@ -29,6 +41,7 @@ function showBooks() {
     li.appendChild(button);
     list.appendChild(li);
   }
+  showStats();
 }
 
 document.getElementById("book-form").addEventListener("submit", function (e) {
@@ -37,8 +50,17 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   var author = document.getElementById("author").value;
   var rating = document.getElementById("rating").value;
   books.push({ title: title, author: author, rating: rating, read: false });
+  saveBooks();
+  showBooks();
+});
+
+document.getElementById("clear").addEventListener("click", function () {
+  books = [];
+  saveBooks();
   showBooks();
 });
 
 document.getElementById("search").addEventListener("input", showBooks);
 document.getElementById("filter").addEventListener("change", showBooks);
+
+showBooks();
