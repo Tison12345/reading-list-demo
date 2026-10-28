@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f1ea;
+  color: #333;
+}
+
+main {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form, .controls {
+  margin-bottom: 16px;
+}
+
+input, select, button {
+  padding: 6px 10px;
+  margin: 2px;
+  font-size: 14px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  background: white;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+li button {
+  float: right;
+}

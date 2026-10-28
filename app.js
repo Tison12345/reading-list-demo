@@ -35,6 +35,7 @@ function showBooks() {
     button.addEventListener("click", function () {
       var index = this.getAttribute("data-index");
       books[index].read = !books[index].read;
+      saveBooks();
       showBooks();
     });
 
